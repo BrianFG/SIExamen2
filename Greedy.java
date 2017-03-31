@@ -86,15 +86,19 @@ public class Greedy {
 		
 		
 		State s = new State(15, "15" , 0);
-
+		System.out.println(s);
 		while(s.curr != 21){
 			int c = 100000;
 			int best = -1;
 			for (int i = 1 ; i < 36; i++){
-				if (c > arr[s.curr][i] && arr[s.curr][i] != -1){
-					c = arr[s.curr][i];
-					best = i;
+				if (arr[s.curr][i] != -1){
+					System.out.println("\t" + new State(i, s.chain + "->" +  i, s.cost + arr[s.curr][i]));
+					if (c > arr[s.curr][i] ){
+						c = arr[s.curr][i];
+						best = i;
+					}
 				}
+
 				
 			}
 			if(best != -1){

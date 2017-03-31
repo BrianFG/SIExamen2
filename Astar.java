@@ -85,18 +85,22 @@ public class Astar {
 
 		
 		State s = new State(15, "15" , 0);
-
+		System.out.println(s);
 		while(s.curr != 21){
 			int c = 100000;
 			int best = -1;
 			double dist = 1000000;
 			for (int i = 1 ; i < 36; i++){
 				double d = calculateDistance(s.curr, 21);
-				if (d < dist && arr[s.curr][i] != -1 && arr[s.curr][i] < c){
-					c = arr[s.curr][i];
-					dist = d;
-					best = i;
+				if (arr[s.curr][i] != -1){
+					System.out.println("\t" + new State(i, s.chain + "->" +  i, s.cost + arr[s.curr][i]) + " : Distance: " + d);
+					if (d < dist && arr[s.curr][i] < c){
+						c = arr[s.curr][i];
+						dist = d;
+						best = i;
+					}
 				}
+
 				
 			}
 			if(best != -1){
